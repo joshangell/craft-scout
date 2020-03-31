@@ -66,7 +66,10 @@ class Scout extends Plugin
         $this->validateConfig();
         $this->registerBehaviors();
         $this->registerVariables();
-        $this->registerEventHandlers();
+
+        if ($this->getSettings()->sync) {
+            $this->registerEventHandlers();
+        }
 
         if (self::getInstance()->is(self::EDITION_PRO)) {
             $this->registerUtility();
